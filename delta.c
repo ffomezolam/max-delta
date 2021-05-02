@@ -104,7 +104,7 @@ void delta_list(t_delta *x, t_symbol *s, long ac, t_atom *av) {
     t_atom *ap, *oe;
 
     for(i = 0, ap = av, oe = outlist; i < ac; i++, ap++, oe++) {
-        if(x->last.a_type == A_LONG ** ap->a_type == A_LONG) {
+        if(x->last.a_type == A_LONG && ap->a_type == A_LONG) {
             atom_setlong(oe, atom_getlong(ap) - atom_getlong(&x->last));
             atom_setlong(&x->last, atom_getlong(ap));
         } else {
