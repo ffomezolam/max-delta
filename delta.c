@@ -88,14 +88,16 @@ void delta_free(t_delta *x)
 
 void delta_int(t_delta *x, long n)
 {
+    long l = atom_getlong(&x->last);
     atom_setlong(&x->last, n);
-    outlet_int(x->m_outlet1, n - atom_getlong(&x->last));
+    outlet_int(x->m_outlet1, n - l);
 }
 
 void delta_float(t_delta *x, double f)
 {
+    double l = atom_getfloat(&x->last);
     atom_setfloat(&x->last, f);
-    outlet_float(x->m_outlet1, f - atom_getfloat(&x->last));
+    outlet_float(x->m_outlet1, f - l);
 }
 
 void delta_list(t_delta *x, t_symbol *s, long ac, t_atom *av) {
@@ -124,7 +126,7 @@ void delta_msg(t_delta *x, t_symbol *s, long ac, t_atom *av)
     t_atom *a;
 
     if(s == gensym("set") && ac) {
-        a =  av + ac - 1; // use last element in list
+        a = av + ac - 1; // use last element in list
         if(a->a_type == A_FLOAT) {
             atom_setfloat(&x->last, atom_getfloat(a));
         } else if(a->a_type == A_LONG) {
