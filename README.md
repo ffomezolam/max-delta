@@ -8,4 +8,5 @@ along with the Max SDK at [cycling74.com](https://cycling74.com) and set your
 build preferences accordingly.
 
 # Notes
-This is a port from my old version of this code for a previous SDK version. The port is complete, but not yet tested.
+This is a port from my old version of this code for a previous SDK version.
+I've tested this version and it works.
